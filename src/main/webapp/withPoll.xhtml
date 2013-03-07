@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j">
+
+<h:head>
+    <title>Guard test</title>
+</h:head>
+
+<h:body>
+
+    <h:form id="f">
+        <h:panelGrid>
+            <h:inputTextarea id="textArea" value="#{panelBean.text}"/>
+            <h:panelGroup>
+                <a4j:commandButton id="btn1" value="btn1" action="#{panelBean.changeText}"
+                                   render="textArea serverDate"
+                                   execute="textArea"/>
+                <a4j:commandButton id="btn2" value="btn2" action="#{panelBean.changeText}" render="textArea"
+                                   execute="textArea serverDate"/>
+            </h:panelGroup>
+            <h:outputText id="serverDate" style="font-size:16px"
+                          value="Server Date: #{pollBean.date}"/>
+        </h:panelGrid>
+        <a4j:poll id="poll" interval="#{panelBean.randomInterval}" render="poll serverDate"/>
+
+    </h:form>
+
+
+    <a4j:status>
+        <f:facet name="start">
+            <h:graphicImage value="/ajax-indicator.gif" alt="ai"/>
+        </f:facet>
+    </a4j:status>
+
+</h:body>
+
+</html>
