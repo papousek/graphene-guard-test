@@ -7,8 +7,14 @@
 
     <container qualifier="jbossas-remote-7" default="true"/>
 
+    <extension qualifier="graphene">
+        <property name="waitAjaxInterval">10</property>
+    </extension>
     <extension qualifier="webdriver">
         <property name="browserCapabilities">firefox</property>
+        <property name="remoteReusable">true</property>
+        <property name="remoteAddress">http://localhost:4444/wd/hub</property>
+        <property name="reuseCookies">true</property>
     </extension>
 
 </arquillian>

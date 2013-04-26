@@ -22,7 +22,7 @@ import pl.itcrowd.richfaces.PollBean;
 import java.io.File;
 import java.net.URL;
 
-import static org.jboss.arquillian.graphene.Graphene.guardXhr;
+import static org.jboss.arquillian.graphene.Graphene.guardAjax;
 import static org.junit.Assert.fail;
 
 @RunWith(Arquillian.class)
@@ -77,12 +77,12 @@ public class GuardTest {
     {
         browser.get(deploymentUrl + "noPoll.jsf");
 
-        guardXhr(btn1).click();
+        guardAjax(btn1).click();
         btn2.click();
-        guardXhr(btn1).click();
-        guardXhr(btn2).click();
-        guardXhr(btn1).click();
-        guardXhr(btn2).click();
+        guardAjax(btn1).click();
+        guardAjax(btn2).click();
+        guardAjax(btn1).click();
+        guardAjax(btn2).click();
     }
 
     @Test
@@ -91,12 +91,12 @@ public class GuardTest {
         browser.get(deploymentUrl + "noPoll.jsf");
 
         try {
-            guardXhr(inputA).sendKeys("Any");
+            guardAjax(inputA).sendKeys("Any");
         } catch (RequestGuardException e) {
             fail("Unexpected RequestGuardException");
         }
 
-        guardXhr(inputB).sendKeys("Anything");
+        guardAjax(inputB).sendKeys("Anything");
     }
 
     /**
@@ -110,18 +110,18 @@ public class GuardTest {
     {
         browser.get(deploymentUrl + "withPoll.jsf");
 
-        guardXhr(btn1).click();
-        guardXhr(btn2).click();
-        guardXhr(btn1).click();
-        guardXhr(btn2).click();
-        guardXhr(btn1).click();
-        guardXhr(btn2).click();
-        guardXhr(btn1).click();
-        guardXhr(btn2).click();
-        guardXhr(btn1).click();
-        guardXhr(btn2).click();
-        guardXhr(btn1).click();
-        guardXhr(btn2).click();
+        guardAjax(btn1).click();
+        guardAjax(btn2).click();
+        guardAjax(btn1).click();
+        guardAjax(btn2).click();
+        guardAjax(btn1).click();
+        guardAjax(btn2).click();
+        guardAjax(btn1).click();
+        guardAjax(btn2).click();
+        guardAjax(btn1).click();
+        guardAjax(btn2).click();
+        guardAjax(btn1).click();
+        guardAjax(btn2).click();
     }
 
     @Test
@@ -129,7 +129,7 @@ public class GuardTest {
     {
         browser.get(deploymentUrl + "buttons.jsf");
 
-        guardXhr(btn1).click();
+        guardAjax(btn1).click();
     }
 
     @Test
@@ -137,6 +137,6 @@ public class GuardTest {
     {
         browser.get(deploymentUrl + "buttons.jsf");
 
-        guardXhr(btn2).click();
+        guardAjax(btn2).click();
     }
 }
