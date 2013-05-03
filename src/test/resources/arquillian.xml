@@ -11,10 +11,10 @@
         <property name="waitAjaxInterval">10</property>
     </extension>
     <extension qualifier="webdriver">
-        <property name="browserCapabilities">firefox</property>
-        <property name="remoteReusable">true</property>
-        <property name="remoteAddress">http://localhost:4444/wd/hub</property>
-        <property name="reuseCookies">true</property>
+        <property name="browserCapabilities">chrome</property>
+    </extension>
+    <extension qualifier="graphene">
+        <property name="waitGuardInterval">5</property>
     </extension>
 
 </arquillian>

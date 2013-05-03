@@ -48,6 +48,9 @@ public class GuardTest {
     @FindBy(id = "f:inputB")
     private WebElement inputB;
 
+    @FindBy(id = "f:serverDate")
+    private WebElement serverDate;
+
     @Deployment(testable = false)
     public static WebArchive createDeployment()
     {
@@ -96,7 +99,25 @@ public class GuardTest {
             fail("Unexpected RequestGuardException");
         }
 
-        guardAjax(inputB).sendKeys("Anything");
+        inputB.sendKeys("Anything");
+        guardAjax(serverDate).click(); //blur
+    }
+
+    @Test
+    public void onChangeWithReload()
+    {
+        browser.get(deploymentUrl + "noPoll.jsf");
+
+        try {
+            guardAjax(inputA).sendKeys("Any");
+        } catch (RequestGuardException e) {
+            fail("Unexpected RequestGuardException");
+        }
+
+        browser.get(deploymentUrl + "noPoll.jsf");
+
+        inputB.sendKeys("Anything");
+        guardAjax(serverDate).click(); //blur
     }
 
     /**
